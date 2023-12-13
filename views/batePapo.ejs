@@ -1,0 +1,39 @@
+<!-- views/batePapo.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bate-papo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Bate-papo</h1>
+   
+    <div>
+        <% for (const mensagem of mensagens) { %>
+            <p><%= mensagem.usuario %>: <%= mensagem.texto %> - <%= mensagem.dataHora %></p>
+        <% } %>
+    </div>
+   
+    <form action="/postarMensagem" method="post">
+      
+        <label for="usuario">Usuário:</label>
+        <select id="usuario" name="usuario" required>
+            <% for (const usuario of usuarios) { %>
+                <option value="<%= usuario.nome %>"><%= usuario.nome %></option>
+            <% } %>
+        </select>
+        
+        <label for="mensagem">Mensagem:</label>
+        <input type="text" id="mensagem" name="mensagem" required>
+
+       
+        <button type="submit">Enviar Mensagem</button>
+    </form>
+    </br>
+   
+    <a href="/">Voltar para o Menu</a>
+    <a href="/cadastroUsuario">Ir para o Cadastro de Usuários</a>
+</body>
+</html>
